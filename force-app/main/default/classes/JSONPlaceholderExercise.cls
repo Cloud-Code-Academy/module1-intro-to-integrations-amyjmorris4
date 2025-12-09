@@ -10,11 +10,17 @@ public class JSONPlaceholderExercise {
     public static String getPostById(Integer postId) {
         // TODO: Student Implementation
         // 1. Create a new HTTP request
+        HttpRequest req = new HttpRequest();
         // 2. Set the endpoint URL using BASE_URL + '/posts/' + postId
+        req.setEndpoint(BASE_URL + '/posts/' + postId);
         // 3. Set the HTTP method to 'GET'
+        req.setMethod('GET');
         // 4. Send the request and get the response
-        // 5. Return the response body as string
-        return null;
+        Http http = new Http();
+        HttpResponse res = http.send(req);
+        // 5. Return the response body as string (raw JSON)
+        return res.getBody();
+        
     }
     
     /**
@@ -28,13 +34,21 @@ public class JSONPlaceholderExercise {
     public static String createPost(String title, String body, Integer userId) {
         // TODO: Student Implementation
         // 1. Create a new HTTP request
+        HttpRequest req = new HttpRequest();
         // 2. Set the endpoint URL using BASE_URL + '/posts'
+        req.setEndpoint(BASE_URL + '/posts');
         // 3. Set the HTTP method to 'POST'
+        req.setMethod('POST');
         // 4. Create a JSON string with the post data
+        String jsonBody = '{"title": "' + title + '", "body": "' + body + '", "userId": ' + userId + '}';
         // 5. Set the request body
+        req.setBody(jsonBody);
         // 6. Send the request and get the response
+        Http http = new Http();
+        HttpResponse res = http.send(req);
         // 7. Return the response body as string
-        return null;
+        System.debug('Response:' + res.getBody());
+        return res.getBody();
     }
     
     /**
@@ -49,13 +63,21 @@ public class JSONPlaceholderExercise {
     public static String updatePost(Integer postId, String title, String body, Integer userId) {
         // TODO: Student Implementation
         // 1. Create a new HTTP request
+        HttpRequest req = new HttpRequest();
         // 2. Set the endpoint URL using BASE_URL + '/posts/' + postId
+        req.setEndpoint(BASE_URL + '/posts/' + postId);
         // 3. Set the HTTP method to 'PUT'
+        req.setMethod('PUT');
         // 4. Create a JSON string with the updated post data
+        String jsonBody = '{"title": "' + title + '", "body": "' + body + '", "userId": ' + userId + '}';
         // 5. Set the request body
+        req.setBody(jsonBody);
         // 6. Send the request and get the response
+        Http http = new Http();
+        HttpResponse res = http.send(req);
         // 7. Return the response body as string
-        return null;
+        System.debug('Response:' + res.getBody());
+        return res.getBody();
     }
     
     /**
@@ -68,13 +90,21 @@ public class JSONPlaceholderExercise {
     public static String patchPostTitle(Integer postId, String title) {
         // TODO: Student Implementation
         // 1. Create a new HTTP request
+        HttpRequest req = new HttpRequest();
         // 2. Set the endpoint URL using BASE_URL + '/posts/' + postId
+        req.setEndpoint(BASE_URL + '/posts/' + postId);
         // 3. Set the HTTP method to 'PATCH'
+        req.setMethod('PATCH');
         // 4. Create a JSON string with only the title
+        String jsonBody = '{"title": "' + title + '"}';
         // 5. Set the request body
+        req.setBody(jsonBody);
         // 6. Send the request and get the response
+        Http http = new Http();
+        HttpResponse res = http.send(req);
         // 7. Return the response body as string
-        return null;
+        System.debug('Response:' + res.getBody());
+        return res.getBody();
     }
     
     /**
@@ -86,10 +116,16 @@ public class JSONPlaceholderExercise {
     public static Integer deletePost(Integer postId) {
         // TODO: Student Implementation
         // 1. Create a new HTTP request
+        HttpRequest req = new HttpRequest();
         // 2. Set the endpoint URL using BASE_URL + '/posts/' + postId
+        req.setEndpoint(BASE_URL + '/posts/' + postId);
         // 3. Set the HTTP method to 'DELETE'
+        req.setMethod('DELETE');
         // 4. Send the request and get the response
+        Http http = new Http();
+        HttpResponse res = http.send(req);
         // 5. Return the response status code
-        return null;
+        System.debug('Response Status Code:' + res.getStatusCode());
+        return res.getStatusCode();
     }
 } 
